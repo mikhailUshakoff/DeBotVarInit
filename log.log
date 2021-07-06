@@ -1,0 +1,17 @@
+Config: default
+Input arguments:
+     tvc: helloDebot.tvc
+      wc: None
+    keys: helloDebot.keys.json
+init_data: None
+is_update_tvc: None
+
+Seed phrase: "school earn brief town insect stay ride surprise can next slam cable"
+Raw address: 0:2e5a9defeb474f6737f3c2fbccce3ea321a539999302d2111f9769d2771c48ca
+testnet:
+Non-bounceable address (for init): 0QAuWp3v60dPZzfzwvvMzj6jIaU5mZMC0hEfl2nSdxxIysaD
+Bounceable address (for later access): kQAuWp3v60dPZzfzwvvMzj6jIaU5mZMC0hEfl2nSdxxIyptG
+mainnet:
+Non-bounceable address (for init): UQAuWp3v60dPZzfzwvvMzj6jIaU5mZMC0hEfl2nSdxxIyn0J
+Bounceable address (for later access): EQAuWp3v60dPZzfzwvvMzj6jIaU5mZMC0hEfl2nSdxxIyiDM
+Succeeded

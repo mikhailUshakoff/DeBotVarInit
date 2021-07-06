@@ -1,0 +1,9 @@
+ABI_PATH (obtained from INPUT): helloDebot.abi.json
+TVM_LINKER_LIB_PATH: "/home/user/git/sol2tvm/pub/lib/stdlib_sol.tvm"
+Saved contract to file 3779c6e477c1e7fd605552aa9b009cd74f67eabf1775bdd35948607bd667dce4.tvc
+testnet:
+Non-bounceable address (for init): 0f83ecbkd8Hn/WBVUqqbAJzXT2fqvxd1vdNZSGB71mfc5PtC
+Bounceable address (for later access): kf83ecbkd8Hn/WBVUqqbAJzXT2fqvxd1vdNZSGB71mfc5KaH
+mainnet:
+Non-bounceable address (for init): Uf83ecbkd8Hn/WBVUqqbAJzXT2fqvxd1vdNZSGB71mfc5EDI
+Bounceable address (for later access): Ef83ecbkd8Hn/WBVUqqbAJzXT2fqvxd1vdNZSGB71mfc5B0N

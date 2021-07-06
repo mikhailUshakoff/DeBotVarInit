@@ -1,0 +1,2441 @@
+.version sol 0.45.0
+
+.macro constructor
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7_with_init_storage$
+}
+;; constructor protection
+GETGLOB 6
+THROWIF 51
+PUSHINT 1
+SETGLOB 6
+;; end constructor protection
+ENDS
+ACCEPT
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.macro setIcon
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDREF
+ENDS
+;; param: icon
+CALLREF {
+	CALL $setIcon_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	setIcon_internal
+.type	setIcon_internal, @function
+CALL $setIcon_internal_macro$
+
+.macro setIcon_internal_macro
+;; param: icon
+; function setIcon
+GETGLOB 5
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	PUSHINT 0
+}
+IF
+;; ==
+GETGLOB 2
+EQUAL
+THROWIFNOT 100
+ACCEPT
+; expValue
+; end expValue
+;; push identifier icon
+; colValue
+; end colValue
+; end function setIcon
+SETGLOB 14
+
+.macro setDeviceCode
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+;; decode TvmCell
+LDREF
+ENDS
+;; param: code
+CALLREF {
+	CALL $setDeviceCode_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	setDeviceCode_internal
+.type	setDeviceCode_internal, @function
+CALL $setDeviceCode_internal_macro$
+
+.macro setDeviceCode_internal_macro
+;; param: code
+; function setDeviceCode
+GETGLOB 5
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	PUSHINT 0
+}
+IF
+;; ==
+GETGLOB 2
+EQUAL
+THROWIFNOT 100
+ACCEPT
+; expValue
+; end expValue
+;; push identifier code
+; colValue
+; end colValue
+; end function setDeviceCode
+SETGLOB 16
+
+.macro start
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+ENDS
+CALLREF {
+	CALL $start_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	start_internal
+.type	start_internal, @function
+CALL $start_internal_macro$
+
+.macro start_internal_macro
+; function start
+PUSHINT 0
+PUSHREF {
+	.blob x4465626f7420737461727421
+}
+CALLREF {
+	CALL $Terminal_no_obj_print_macro$
+}
+PUSHINT 335034575
+PUSHREF {
+	.blob x696e707574206964
+}
+PUSHINT 0
+PUSHINT 1
+PUSHINT 100
+CALLREF {
+	CALL $AmountInput_no_obj_get_macro$
+}
+; end function start
+
+.macro addDeviceSetDeviceId
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDUQ 128
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDU 128
+}
+IFNOT
+ENDS
+;; param: value
+CALLREF {
+	CALL $addDeviceSetDeviceId_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	addDeviceSetDeviceId_internal
+.type	addDeviceSetDeviceId_internal, @function
+CALL $addDeviceSetDeviceId_internal_macro$
+
+.macro addDeviceSetDeviceId_internal_macro
+;; param: value
+; function addDeviceSetDeviceId
+; expValue
+; end expValue
+;; push identifier value
+DUP
+; colValue
+SETGLOB 24
+; end colValue
+NEWDICT
+PUSHINT 0
+NEWC
+STU 256
+PUSHINT 0
+ROT
+PUSHINT 64
+DICTUSETB
+;; push identifier m_deviceId
+GETGLOB 24
+NEWC
+STU 256
+PUSHINT 1
+ROT
+PUSHINT 64
+DICTUSETB
+NEWC
+STDICT
+ENDC
+;; push identifier m_iotDeviceCode
+GETGLOB 16
+NEWC
+STSLICECONST x2_
+STOPTREF
+STOPTREF
+STZERO
+ENDC
+HASHCU
+NEWC
+STSLICECONST x801_
+STU 256
+ENDC
+CTOS
+; expValue
+; end expValue
+; colValue
+SETGLOB 23
+; end colValue
+TRUE
+CALLREF {
+	CALL $isDeviceMoneySend_internal_macro$
+}
+; end function addDeviceSetDeviceId
+DROP
+
+.macro isDeviceMoneySend
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDI 1
+ENDS
+;; param: value
+CALLREF {
+	CALL $isDeviceMoneySend_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	isDeviceMoneySend_internal
+.type	isDeviceMoneySend_internal, @function
+CALL $isDeviceMoneySend_internal_macro$
+
+.macro isDeviceMoneySend_internal_macro
+;; param: value
+; function isDeviceMoneySend
+;; if
+;; push identifier value
+DUP
+PUSHCONT {
+	PUSHINT 1717762330
+	;; push identifier m_deviceAddr
+	GETGLOB 23
+	CALLREF {
+		CALL $Sdk_no_obj_getAccountType_macro$
+	}
+}
+PUSHCONT {
+	PUSHINT 94113135
+	PUSHREF {
+		.blob x5465726d696e6174656421
+	}
+	CALLREF {
+		CALL $Terminal_no_obj_print_macro$
+	}
+}
+IFELSE
+;; end if
+; end function isDeviceMoneySend
+DROP
+
+.macro addDeviceCheckContract
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDI 8
+ENDS
+;; param: acc_type
+CALLREF {
+	CALL $addDeviceCheckContract_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	addDeviceCheckContract_internal
+.type	addDeviceCheckContract_internal, @function
+CALL $addDeviceCheckContract_internal_macro$
+
+.macro addDeviceCheckContract_internal_macro
+;; param: acc_type
+; function addDeviceCheckContract
+;; if
+;; push identifier acc_type
+DUP
+EQINT -1
+PUSHCONT {
+	PUSHINT 0
+	PUSHREF {
+		.blob x53656e6420302e3120746f6e206f72206d6f726520746f2074686520616464726573733a
+	}
+	CALLREF {
+		CALL $Terminal_no_obj_print_macro$
+	}
+	PUSHINT 0
+	NEWC
+	NULL
+	TUPLE 2
+	NEWC
+	;; push identifier m_deviceAddr
+	GETGLOB 23
+	CALLREF {
+		CALL $convertAddressToHexString_macro$
+	}
+	CALLREF {
+		CALL $assembleList_macro$
+	}
+	CALLREF {
+		CALL $Terminal_no_obj_print_macro$
+	}
+	PUSHINT 690182183
+	PUSHREF {
+		.blob x44696420796f752073656e6420746865206d6f6e65793f
+	}
+	CALLREF {
+		CALL $ConfirmInput_no_obj_get_macro$
+	}
+}
+PUSHCONT {
+	;; if
+	;; push identifier acc_type
+	DUP
+	EQINT 0
+	PUSHCONT {
+		PUSHINT 1701548687
+		;; push identifier m_deviceAddr
+		GETGLOB 23
+		CALLREF {
+			CALL $Sdk_no_obj_getBalance_macro$
+		}
+	}
+	PUSHCONT {
+		;; if
+		;; push identifier acc_type
+		DUP
+		EQINT 1
+		PUSHCONT {
+			PUSHINT 0
+			NEWC
+			NULL
+			TUPLE 2
+			NEWC
+			PUSHSLICE x636f6e747261637420657869737420
+			CALLREF {
+				CALL $storeStringInBuilders_macro$
+			}
+			CALLREF {
+				CALL $appendToList_macro$
+			}
+			;; push identifier m_deviceAddr
+			GETGLOB 23
+			CALLREF {
+				CALL $convertAddressToHexString_macro$
+			}
+			CALLREF {
+				CALL $assembleList_macro$
+			}
+			CALLREF {
+				CALL $Terminal_no_obj_print_macro$
+			}
+			PUSHINT 0
+			PUSHREF {
+				.blob x66696e697368
+			}
+			CALLREF {
+				CALL $Terminal_no_obj_print_macro$
+			}
+		}
+		PUSHCONT {
+			;; if
+			;; push identifier acc_type
+			DUP
+			EQINT 2
+			PUSHCONT {
+				PUSHINT 94113135
+				NEWC
+				NULL
+				TUPLE 2
+				NEWC
+				PUSHSLICE x5465726d696e6174656421204163636f756e7420
+				CALLREF {
+					CALL $storeStringInBuilders_macro$
+				}
+				CALLREF {
+					CALL $appendToList_macro$
+				}
+				;; push identifier m_deviceAddr
+				GETGLOB 23
+				CALLREF {
+					CALL $convertAddressToHexString_macro$
+				}
+				PUSHSLICE x2069732066726f7a656e2e
+				CALLREF {
+					CALL $storeStringInBuilders_macro$
+				}
+				CALLREF {
+					CALL $appendToList_macro$
+				}
+				CALLREF {
+					CALL $assembleList_macro$
+				}
+				CALLREF {
+					CALL $Terminal_no_obj_print_macro$
+				}
+			}
+			IF
+			;; end if
+		}
+		IFELSE
+		;; end if
+	}
+	IFELSE
+	;; end if
+}
+IFELSE
+;; end if
+; end function addDeviceCheckContract
+DROP
+
+.macro checkIotDeviceBalance
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDUQ 128
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDU 128
+}
+IFNOT
+ENDS
+;; param: nanotokens
+CALLREF {
+	CALL $checkIotDeviceBalance_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	checkIotDeviceBalance_internal
+.type	checkIotDeviceBalance_internal, @function
+CALL $checkIotDeviceBalance_internal_macro$
+
+.macro checkIotDeviceBalance_internal_macro
+;; param: nanotokens
+; function checkIotDeviceBalance
+;; if
+;; push identifier nanotokens
+DUP
+;; <
+PUSHINT 100000000
+LESS
+PUSHCONT {
+	PUSHINT 0
+	NEWC
+	NULL
+	TUPLE 2
+	NEWC
+	PUSHSLICE x4164647265737320
+	CALLREF {
+		CALL $storeStringInBuilders_macro$
+	}
+	CALLREF {
+		CALL $appendToList_macro$
+	}
+	;; push identifier m_deviceAddr
+	GETGLOB 23
+	CALLREF {
+		CALL $convertAddressToHexString_macro$
+	}
+	PUSHSLICE x2062616c616e636520697320
+	CALLREF {
+		CALL $storeStringInBuilders_macro$
+	}
+	CALLREF {
+		CALL $appendToList_macro$
+	}
+	;; push identifier nanotokens
+	PUSH S3
+	PUSHINT 9
+	CALLREF {
+		CALL $convertFixedPointToString_macro$
+	}
+	PUSHSLICE x20746f6e73
+	CALLREF {
+		CALL $storeStringInBuilders_macro$
+	}
+	CALLREF {
+		CALL $appendToList_macro$
+	}
+	CALLREF {
+		CALL $assembleList_macro$
+	}
+	CALLREF {
+		CALL $Terminal_no_obj_print_macro$
+	}
+	PUSHINT -1
+	CALLREF {
+		CALL $addDeviceCheckContract_internal_macro$
+	}
+}
+PUSHCONT {
+	PUSHINT 1822630878
+	PUSHREF {
+		.blob x4465706c6f79696e672e2e
+	}
+	CALLREF {
+		CALL $Terminal_no_obj_print_macro$
+	}
+}
+IFELSE
+;; end if
+; end function checkIotDeviceBalance
+DROP
+
+.macro DeployIotDevice
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+ENDS
+CALLREF {
+	CALL $DeployIotDevice_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	DeployIotDevice_internal
+.type	DeployIotDevice_internal, @function
+CALL $DeployIotDevice_internal_macro$
+
+.macro DeployIotDevice_internal_macro
+; function DeployIotDevice
+NEWDICT
+PUSHINT 0
+NEWC
+STU 256
+PUSHINT 0
+ROT
+PUSHINT 64
+DICTUSETB
+;; push identifier m_deviceId
+GETGLOB 24
+NEWC
+STU 256
+PUSHINT 1
+ROT
+PUSHINT 64
+DICTUSETB
+NEWC
+STDICT
+ENDC
+;; push identifier m_iotDeviceCode
+GETGLOB 16
+NEWC
+STSLICECONST x2_
+STOPTREF
+STOPTREF
+STZERO
+ENDC
+;; decl: image
+;; push identifier image
+DUP
+HASHCU
+NEWC
+STSLICECONST x801_
+STU 256
+ENDC
+CTOS
+;; decl: addr
+NULL
+;; decl: none
+;; push identifier addr
+PUSH S1
+PUSHSLICE x926283ed7483886e3fe0174_
+NEWC
+STSLICE
+STSLICE
+PUSHSLICE x0e_
+STSLICER
+;; push identifier image
+PUSH S3
+STREFR
+STSLICECONST 1
+NEWC
+STSLICECONST 1
+PUSHINT 512
+STZEROES
+;; push identifier none
+PUSH2 S2, S2
+ISNULL
+PUSHCONT {
+	DROP
+	STSLICECONST 0
+}
+PUSHCONT {
+	SWAP
+	STSLICECONST 1
+	STU 256
+}
+IFELSE
+PUSHSLICE x00000000000000000000000068b55f3f
+STSLICER
+STBREFR
+ENDC
+;; decl: deployMsg
+;; push identifier deployMsg
+DUP
+PUSHINT 1
+SENDRAWMSG
+BLKDROP 4
+; end function DeployIotDevice
+
+.macro onSuccessDeviceDeployed
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+ENDS
+CALLREF {
+	CALL $onSuccessDeviceDeployed_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	onSuccessDeviceDeployed_internal
+.type	onSuccessDeviceDeployed_internal, @function
+CALL $onSuccessDeviceDeployed_internal_macro$
+
+.macro onSuccessDeviceDeployed_internal_macro
+; function onSuccessDeviceDeployed
+PUSHINT 0
+PUSHREF {
+	.blob x6f6e537563636573734465766963654465706c6f796564
+}
+CALLREF {
+	CALL $Terminal_no_obj_print_macro$
+}
+PUSHINT 0
+PUSHREF {
+	.blob x66696e697368
+}
+CALLREF {
+	CALL $Terminal_no_obj_print_macro$
+}
+; end function onSuccessDeviceDeployed
+
+.macro onDeployDeviceFailed
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDU 32
+LDU 32
+ENDS
+;; param: sdkError
+;; param: exitCode
+CALLREF {
+	CALL $onDeployDeviceFailed_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	onDeployDeviceFailed_internal
+.type	onDeployDeviceFailed_internal, @function
+CALL $onDeployDeviceFailed_internal_macro$
+
+.macro onDeployDeviceFailed_internal_macro
+;; param: sdkError
+;; param: exitCode
+; function onDeployDeviceFailed
+PUSHINT 0
+NEWC
+NULL
+TUPLE 2
+NEWC
+PUSHSLICE x4465706c6f79206661696c65642e2053646b206572726f72203d20
+CALLREF {
+	CALL $storeStringInBuilders_macro$
+}
+CALLREF {
+	CALL $appendToList_macro$
+}
+;; push identifier sdkError
+PUSH S4
+PUSHINT 0
+FALSE
+FALSE
+CALLREF {
+	CALL $convertIntToDecStr_macro$
+}
+CALLREF {
+	CALL $appendToList_macro$
+}
+PUSHSLICE x2c204572726f7220636f6465203d20
+CALLREF {
+	CALL $storeStringInBuilders_macro$
+}
+CALLREF {
+	CALL $appendToList_macro$
+}
+;; push identifier exitCode
+PUSH S3
+PUSHINT 0
+FALSE
+FALSE
+CALLREF {
+	CALL $convertIntToDecStr_macro$
+}
+CALLREF {
+	CALL $appendToList_macro$
+}
+CALLREF {
+	CALL $assembleList_macro$
+}
+CALLREF {
+	CALL $Terminal_no_obj_print_macro$
+}
+PUSHINT 1822630878
+PUSHREF {
+	.blob x52657472696e67
+}
+CALLREF {
+	CALL $Terminal_no_obj_print_macro$
+}
+; end function onDeployDeviceFailed
+DROP2
+
+.macro getDebotInfo
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+ENDS
+CALLREF {
+	CALL $getDebotInfo_internal_macro$
+}
+;; emitting 10 value(s)
+PUSH S10
+PUSHCONT {
+	PUSH S12
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 1
+	STUR 98
+	REVERSE 10, 1
+	BLKSWAP 10, 1
+	NEWC
+	STSLICECONST x00000deb
+	STREF
+	STREF
+	STREF
+	BLKSWAP 7, 1
+	NEWC
+	STREF
+	STREF
+	STSLICE
+	STREF
+	BLKSWAP 3, 1
+	NEWC
+	STREF
+	STREF
+	STREF
+	STBREFR
+	STBREFR
+	STBREFR
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+PUSHCONT {
+	BLKDROP 10
+}
+IFELSE
+IFREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	getDebotInfo_internal
+.type	getDebotInfo_internal, @function
+CALL $getDebotInfo_internal_macro$
+
+.macro getDebotInfo_internal_macro
+;; ret param: name
+PUSHREF {
+}
+;; ret param: version
+PUSHREF {
+}
+;; ret param: publisher
+PUSHREF {
+}
+;; ret param: caption
+PUSHREF {
+}
+;; ret param: author
+PUSHREF {
+}
+;; ret param: support
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+;; ret param: hello
+PUSHREF {
+}
+;; ret param: language
+PUSHREF {
+}
+;; ret param: dabi
+PUSHREF {
+}
+;; ret param: icon
+PUSHREF {
+}
+; function getDebotInfo
+; expValue
+; end expValue
+PUSHREF {
+	.blob x5465737420696e6974207374617465
+}
+; colValue
+POP S10
+; end colValue
+; expValue
+; end expValue
+PUSHREF {
+	.blob x302e302e33
+}
+; colValue
+POP S9
+; end colValue
+; expValue
+; end expValue
+PUSHREF {
+	.blob x
+}
+; colValue
+POP S8
+; end colValue
+; expValue
+; end expValue
+PUSHREF {
+	.blob x5465737420696e6974207374617465
+}
+; colValue
+POP S7
+; end colValue
+; expValue
+; end expValue
+PUSHREF {
+	.blob x
+}
+; colValue
+POP S6
+; end colValue
+;; address.makeAddrStd()
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+; expValue
+; end expValue
+; colValue
+POP S5
+; end colValue
+; expValue
+; end expValue
+PUSHREF {
+	.blob x48656c6c6f2c206920616d2061204465426f742e
+}
+; colValue
+POP S4
+; end colValue
+; expValue
+; end expValue
+PUSHREF {
+	.blob x656e
+}
+; colValue
+POP S3
+; end colValue
+;; push identifier m_debotAbi
+GETGLOB 11
+DUP
+ISNULL
+THROWIF 63
+; expValue
+; end expValue
+; colValue
+POP S2
+; end colValue
+; expValue
+; end expValue
+;; push identifier m_icon
+; colValue
+DROP
+GETGLOB 14
+; end colValue
+; end function getDebotInfo
+
+.macro getRequiredInterfaces
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+ENDS
+CALLREF {
+	CALL $getRequiredInterfaces_internal_macro$
+}
+;; emitting 1 value(s)
+PUSH S1
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHSLICE x00000000000000000000000036190b42a_
+	STSLICER
+	SWAP
+	UNPAIR
+	XCHG s2
+	STU 32
+	STDICT
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+PUSHCONT {
+	DROP
+}
+IFELSE
+IFREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	getRequiredInterfaces_internal
+.type	getRequiredInterfaces_internal, @function
+CALL $getRequiredInterfaces_internal_macro$
+
+.macro getRequiredInterfaces_internal_macro
+;; ret param: interfaces
+PUSHINT 0
+NEWDICT
+PAIR
+; function getRequiredInterfaces
+;; return
+PUSHINT 1
+NEWDICT
+PUSHINT 61327837143279038880828163389518064523935669597243029312953519799871119370467
+NEWC
+STU 256
+PUSHINT 0
+ROT
+PUSHINT 32
+DICTUSETB
+PAIR
+NIP
+; end function getRequiredInterfaces
+
+.macro setUserInput
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDREF
+ENDS
+;; param: value
+CALLREF {
+	CALL $setUserInput_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	setUserInput_internal
+.type	setUserInput_internal, @function
+CALL $setUserInput_internal_macro$
+
+.macro setUserInput_internal_macro
+;; param: value
+; function setUserInput
+PUSHINT 0
+NEWC
+NULL
+TUPLE 2
+NEWC
+PUSHSLICE x596f75206861766520656e74657265642022
+CALLREF {
+	CALL $storeStringInBuilders_macro$
+}
+CALLREF {
+	CALL $appendToList_macro$
+}
+;; push identifier value
+PUSH S3
+CTOS
+CALLREF {
+	CALL $storeStringInBuilders_macro$
+}
+CALLREF {
+	CALL $appendToList_macro$
+}
+PUSHSLICE x22
+CALLREF {
+	CALL $storeStringInBuilders_macro$
+}
+CALLREF {
+	CALL $appendToList_macro$
+}
+CALLREF {
+	CALL $assembleList_macro$
+}
+CALLREF {
+	CALL $Terminal_no_obj_print_macro$
+}
+; end function setUserInput
+DROP
+
+.macro deployDevice
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDUQ 256
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDU 256
+}
+IFNOT
+ENDS
+;; param: initNo
+CALLREF {
+	CALL $deployDevice_internal_macro$
+}
+;; emitting 1 value(s)
+PUSH S1
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 1
+	STUR 98
+	SWAP
+	NEWC
+	STSLICECONST xba8a1378
+	STSLICE
+	STBREFR
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+PUSHCONT {
+	DROP
+}
+IFELSE
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	deployDevice_internal
+.type	deployDevice_internal, @function
+CALL $deployDevice_internal_macro$
+
+.macro deployDevice_internal_macro
+;; param: initNo
+; function deployDevice
+ACCEPT
+NEWDICT
+PUSHINT 0
+NEWC
+STU 256
+PUSHINT 0
+ROT
+PUSHINT 64
+DICTUSETB
+;; push identifier initNo
+PUSH S1
+NEWC
+STU 256
+PUSHINT 1
+ROT
+PUSHINT 64
+DICTUSETB
+NEWC
+STDICT
+ENDC
+;; push identifier m_iotDeviceCode
+GETGLOB 16
+NEWC
+STSLICECONST x2_
+STOPTREF
+STOPTREF
+STZERO
+ENDC
+DUP
+HASHCU
+NEWC
+STSLICECONST x801_
+STU 256
+ENDC
+CTOS
+SWAP
+PUSHINT 100000000
+PUSH S2
+NEWC
+STSLICECONST x62_
+STSLICE
+SWAP
+STGRAMS
+PUSHSLICE x000000000000000000000000007_
+STSLICER
+STREF
+STSLICECONST x345aaf9fc_
+ENDC
+PUSHINT 1
+SENDRAWMSG
+;; decl: addr
+;; return
+;; push identifier addr
+; end function deployDevice
+NIP
+
+.internal-alias :onCodeUpgrade, 2
+.internal :onCodeUpgrade
+; function onCodeUpgrade
+;; set default state vars
+PUSHINT 0
+SETGLOB 10
+NULL
+SETGLOB 11
+NULL
+SETGLOB 12
+NULL
+SETGLOB 13
+PUSHREF {
+}
+SETGLOB 14
+PUSHREF {
+}
+SETGLOB 15
+PUSHREF {
+}
+SETGLOB 16
+PUSHINT 0
+SETGLOB 17
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+SETGLOB 18
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+SETGLOB 19
+PUSHINT 0
+NEWDICT
+PAIR
+SETGLOB 20
+PUSHREF {
+}
+SETGLOB 21
+PUSHREF {
+}
+SETGLOB 22
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+SETGLOB 23
+PUSHINT 0
+SETGLOB 24
+;; end set default state vars
+; end function onCodeUpgrade
+CALLREF {
+	CALL $c7_to_c4$
+}
+COMMIT
+THROW 0
+
+.macro upgrade
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+;; decode TvmCell
+LDREF
+ENDS
+;; param: state
+CALLREF {
+	CALL $upgrade_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	upgrade_internal
+.type	upgrade_internal, @function
+CALL $upgrade_internal_macro$
+
+.macro upgrade_internal_macro
+;; param: state
+; function upgrade
+GETGLOB 5
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	PUSHINT 0
+}
+IF
+;; ==
+GETGLOB 2
+EQUAL
+THROWIFNOT 100
+;; push identifier state
+DUP
+CTOS
+LDREF
+; colValue
+DROP
+;; decl: newcode
+ACCEPT
+CALLREF {
+	CALL $c7_to_c4$
+}
+COMMIT
+;; push identifier newcode
+DUP
+SETCODE
+;; push identifier newcode
+DUP
+CTOS
+DUP
+PUSHSLICE x8adb35
+SDEQ
+PUSHCONT {
+	PLDREFIDX 1
+	CTOS
+}
+IF
+PLDREF
+CTOS
+BLESS
+POP c3
+CALLREF {
+	CALL $:onCodeUpgrade$
+}
+; end function upgrade
+DROP2
+
+.macro getDebotOptions
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+ENDS
+CALLREF {
+	CALL $getDebotOptions_internal_macro$
+}
+;; emitting 4 value(s)
+PUSH S4
+PUSHCONT {
+	PUSH S6
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 1
+	STUR 98
+	REVERSE 4, 1
+	BLKSWAP 4, 1
+	NEWC
+	STSLICECONST xfdecd0db
+	STU 8
+	STREF
+	STREF
+	STSLICE
+	STBREFR
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+PUSHCONT {
+	BLKDROP 4
+}
+IFELSE
+IFREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	getDebotOptions_internal
+.type	getDebotOptions_internal, @function
+CALL $getDebotOptions_internal_macro$
+
+.macro getDebotOptions_internal_macro
+;; ret param: options
+PUSHINT 0
+;; ret param: debotAbi
+PUSHREF {
+}
+;; ret param: targetAbi
+PUSHREF {
+}
+;; ret param: targetAddr
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+; function getDebotOptions
+;; push identifier m_debotAbi
+GETGLOB 11
+ISNULL
+NOT
+PUSHCONT {
+	;; push identifier m_debotAbi
+	GETGLOB 11
+	DUP
+	ISNULL
+	THROWIF 63
+}
+PUSHCONT {
+	PUSHREF {
+		.blob x
+	}
+}
+IFELSE
+; expValue
+; end expValue
+; colValue
+POP S3
+; end colValue
+;; push identifier m_targetAbi
+GETGLOB 12
+ISNULL
+NOT
+PUSHCONT {
+	;; push identifier m_targetAbi
+	GETGLOB 12
+	DUP
+	ISNULL
+	THROWIF 63
+}
+PUSHCONT {
+	PUSHREF {
+		.blob x
+	}
+}
+IFELSE
+; expValue
+; end expValue
+; colValue
+POP S2
+; end colValue
+;; push identifier m_target
+GETGLOB 13
+ISNULL
+NOT
+PUSHCONT {
+	;; push identifier m_target
+	GETGLOB 13
+	DUP
+	ISNULL
+	THROWIF 63
+}
+PUSHCONT {
+	PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+}
+IFELSE
+; expValue
+; end expValue
+; colValue
+NIP
+; end colValue
+; expValue
+; end expValue
+;; push identifier m_options
+GETGLOB 10
+; colValue
+POP S4
+; end colValue
+; end function getDebotOptions
+
+.macro setABI
+DROP
+GETGLOB 8
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+LDREF
+ENDS
+;; param: dabi
+CALLREF {
+	CALL $setABI_internal_macro$
+}
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	setABI_internal
+.type	setABI_internal, @function
+CALL $setABI_internal_macro$
+
+.macro setABI_internal_macro
+;; param: dabi
+; function setABI
+GETGLOB 2
+;; ==
+GETGLOB 5
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	PUSHINT 0
+}
+IF
+EQUAL
+THROWIFNOT 100
+ACCEPT
+; expValue
+;; fetch m_options
+; end expValue
+GETGLOB 10
+PUSHINT 1
+OR
+; colValue
+SETGLOB 10
+; end colValue
+; expValue
+; end expValue
+;; push identifier dabi
+; colValue
+; end colValue
+; end function setABI
+SETGLOB 11
+
+.macro c7_to_c4
+GETGLOB 24
+GETGLOB 23
+GETGLOB 22
+GETGLOB 21
+GETGLOB 20
+GETGLOB 19
+GETGLOB 18
+GETGLOB 17
+GETGLOB 16
+GETGLOB 15
+GETGLOB 14
+GETGLOB 13
+GETGLOB 12
+GETGLOB 11
+GETGLOB 10
+GETGLOB 6
+GETGLOB 3
+GETGLOB 2
+NEWC
+STU 256
+STU 64
+STU 1
+STU 8
+SWAP
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	STSLICECONST 0
+}
+PUSHCONT {
+	NEWC
+	STREF
+	SWAP
+	STSLICECONST 1
+	STBREF
+}
+IFELSE
+SWAP
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	STSLICECONST 0
+}
+PUSHCONT {
+	NEWC
+	STREF
+	SWAP
+	STSLICECONST 1
+	STBREF
+}
+IFELSE
+SWAP
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	STSLICECONST 0
+}
+PUSHCONT {
+	NEWC
+	STSLICE
+	SWAP
+	STSLICECONST 1
+	STBREF
+}
+IFELSE
+BLKSWAP 11, 1
+NEWC
+STREF
+STREF
+STREF
+STU 256
+STSLICE
+BLKSWAP 6, 1
+NEWC
+STSLICE
+SWAP
+UNPAIR
+XCHG s2
+STU 32
+STDICT
+STREF
+STREF
+ROTREV
+NEWC
+STSLICE
+STU 256
+STBREFR
+STBREFR
+STBREFR
+ENDC
+POP C4
+
+.macro c4_to_c7
+PUSHROOT
+CTOS        ; c4
+LDU 256      ; pubkey c4
+LDU 64      ; pubkey timestamp c4
+LDU 1       ; pubkey [timestamp] constructor_flag memory
+LDU 8
+LDOPTREF
+SWAP
+DUP
+ISNULL
+PUSHCONT {
+	CTOS
+	PLDREF
+}
+IFNOT
+SWAP
+LDOPTREF
+SWAP
+DUP
+ISNULL
+PUSHCONT {
+	CTOS
+	PLDREF
+}
+IFNOT
+SWAP
+LDOPTREF
+SWAP
+DUP
+ISNULL
+PUSHCONT {
+	CTOS
+	LDMSGADDR
+	DROP
+}
+IFNOT
+SWAP
+;; load next cell
+LDREF
+ENDS
+CTOS
+LDREF
+;; decode TvmCell
+LDREF
+;; decode TvmCell
+LDREF
+LDU 256
+LDMSGADDR
+;; load next cell
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+LDU 32
+LDDICT
+ROTREV
+PAIR
+SWAP
+LDREF
+LDREF
+;; load next cell
+LDREF
+ENDS
+CTOS
+LDMSGADDR
+LDU 256
+ENDS
+SETGLOB 24
+SETGLOB 23
+SETGLOB 22
+SETGLOB 21
+SETGLOB 20
+SETGLOB 19
+SETGLOB 18
+SETGLOB 17
+SETGLOB 16
+SETGLOB 15
+SETGLOB 14
+SETGLOB 13
+SETGLOB 12
+SETGLOB 11
+SETGLOB 10
+TRUE
+SETGLOB 8
+; pubkey [timestamp] constructor_flag
+SETGLOB 6   ; pubkey [timestamp]
+SETGLOB 3   ; D
+SETGLOB 2
+
+.macro c4_to_c7_with_init_storage
+PUSHROOT
+CTOS        ; c4
+DUP        ; c4 c4
+SBITS      ; c4 bits
+GTINT 1    ; c4 bits>1
+PUSHCONT {
+	LDU 256      ; pubkey c4
+	LDU 64      ; pubkey timestamp c4
+	LDU 1       ; pubkey [timestamp] constructor_flag memory
+	LDU 8
+	LDOPTREF
+	SWAP
+	DUP
+	ISNULL
+	PUSHCONT {
+		CTOS
+		PLDREF
+	}
+	IFNOT
+	SWAP
+	LDOPTREF
+	SWAP
+	DUP
+	ISNULL
+	PUSHCONT {
+		CTOS
+		PLDREF
+	}
+	IFNOT
+	SWAP
+	LDOPTREF
+	SWAP
+	DUP
+	ISNULL
+	PUSHCONT {
+		CTOS
+		LDMSGADDR
+		DROP
+	}
+	IFNOT
+	SWAP
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDREF
+	;; decode TvmCell
+	LDREF
+	;; decode TvmCell
+	LDREF
+	LDU 256
+	LDMSGADDR
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+	LDU 32
+	LDDICT
+	ROTREV
+	PAIR
+	SWAP
+	LDREF
+	LDREF
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+	LDU 256
+	ENDS
+	SETGLOB 24
+	SETGLOB 23
+	SETGLOB 22
+	SETGLOB 21
+	SETGLOB 20
+	SETGLOB 19
+	SETGLOB 18
+	SETGLOB 17
+	SETGLOB 16
+	SETGLOB 15
+	SETGLOB 14
+	SETGLOB 13
+	SETGLOB 12
+	SETGLOB 11
+	SETGLOB 10
+	TRUE
+	SETGLOB 8
+	; pubkey [timestamp] constructor_flag
+	SETGLOB 6   ; pubkey [timestamp]
+	SETGLOB 3   ; D
+	SETGLOB 2
+}
+PUSHCONT {
+	PLDDICT   ; D
+	; init m_options
+	PUSHINT 0
+	SETGLOB 10
+	; init m_debotAbi
+	NULL
+	SETGLOB 11
+	; init m_targetAbi
+	NULL
+	SETGLOB 12
+	; init m_target
+	NULL
+	SETGLOB 13
+	; init m_icon
+	PUSHREF {
+	}
+	SETGLOB 14
+	; init m_iotClientCode
+	PUSHREF {
+	}
+	SETGLOB 15
+	; init m_iotDeviceCode
+	PUSHREF {
+	}
+	SETGLOB 16
+	; init m_masterPubKey
+	PUSHINT 0
+	SETGLOB 17
+	; init m_iotClient
+	PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+	SETGLOB 18
+	; init m_userMsig
+	PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+	SETGLOB 19
+	; init m_devices
+	PUSHINT 0
+	NEWDICT
+	PAIR
+	SETGLOB 20
+	; init m_deviceMAC
+	PUSHREF {
+	}
+	SETGLOB 21
+	; init m_deviceName
+	PUSHREF {
+	}
+	SETGLOB 22
+	; init m_deviceAddr
+	PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+	SETGLOB 23
+	; init m_deviceId
+	PUSHINT 0
+	SETGLOB 24
+	; set contract pubkey
+	PUSHINT 0
+	SWAP
+	PUSHINT 64
+	DICTUGET
+	THROWIFNOT 61
+	PLDU 256
+	SETGLOB 2
+	PUSHINT 0 ; timestamp
+	SETGLOB 3
+	PUSHINT 0 ; constructor_flag
+	SETGLOB 6
+TRUE
+SETGLOB 8
+}
+IFELSE
+
+.internal-alias :main_internal, 0
+.internal :main_internal
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Function: main_internal
+;; param: contract_balance
+;; param: msg_balance
+;; param: int_msg_info
+;; param: msg_body_slice
+;; param: transaction_type
+PUSH S2
+CTOS
+PLDU 4
+MODPOW2 1
+IFRET
+PUSH S1    ; body
+SEMPTY     ; isEmpty
+IFRET
+PUSH S1 ; body
+LDUQ 32  ; [funcId] body' ok
+THROWIFNOT 60 ; funcId body'
+PUSH S1 ; funcId body' funcId
+IFNOTRET
+SWAP
+CALLREF {
+	CALL $public_function_selector$
+}
+GETGLOB 7
+ISNULL
+THROWIF 60
+
+.internal-alias :main_external, -1
+.internal :main_external
+PUSH S1
+CALLREF {
+	CALL $c4_to_c7_with_init_storage$
+}
+LDU 1 ; haveSign msgSlice
+SWAP
+PUSHCONT {
+	PUSHINT 512
+	LDSLICEX ; signatureSlice msgSlice
+	DUP      ; signatureSlice msgSlice msgSlice
+	HASHSU   ; signatureSlice msgSlice hashMsgSlice
+	SWAP  ; signatureSlice hashMsgSlice msgSlice
+	LDU 1 ; signatureSlice hashMsgSlice havePubkey msgSlice
+	SWAP  ; signatureSlice hashMsgSlice msgSlice havePubkey
+	PUSHCONT {
+		LDU 256       ; signatureSlice hashMsgSlice pubkey msgSlice
+		XCHG s3
+		SWAP
+	}
+	PUSHCONT {
+		XCHG s2
+		GETGLOB 2
+	}
+	IFELSE
+	DUP
+	SETGLOB 5
+	CHKSIGNU      ; msgSlice isSigned
+	THROWIFNOT 40 ; msgSlice
+}
+PUSHCONT {
+	LDU 1      ; havePubkey msgSlice
+	SWAP       ; msgSlice havePubkey
+	THROWIF 58 ; msgSlice
+}
+IFELSE
+LDU 64                         ; timestamp msgSlice
+SWAP                           ; msgSlice timestamp
+CALL $replay_protection_macro$ ; msgSlice
+LDU 32  ; expireAt msgSlice
+SWAP    ; msgSlice expireAt
+NOW     ; msgSlice expireAt now
+GREATER ; msgSlice expireAt>now
+THROWIFNOT 57
+LDU  32 ; funcId body
+SWAP    ; body funcId
+CALLREF {
+	CALL $public_function_selector$
+}
+GETGLOB 7
+ISNULL
+THROWIF 60
+
+.globl	AmountInput_with_obj_get
+.type	AmountInput_with_obj_get, @function
+CALL $AmountInput_with_obj_get_macro$
+
+.macro AmountInput_with_obj_get_macro
+;; param: answerId
+;; param: prompt
+;; param: decimals
+;; param: min
+;; param: max
+; function get
+;; address.makeAddrStd()
+PUSHSLICE x9c343a68e133c5382c4991120c33b5e40f7bc31d25bea4414a9798db0b0613d9d09_
+;; decl: addr
+;; Remote call IAmountInput.get
+;; push identifier max
+;; push identifier min
+;; push identifier decimals
+PUSH3 S1, S2, S3
+;; push identifier prompt
+;; push identifier answerId
+;; push identifier addr
+PUSH3 S7, S8, S3
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000003_
+STSLICER
+BLKSWAP 5, 1
+NEWC
+STSLICECONST x16740bd3
+STU 32
+STREF
+STU 8
+STU 128
+STU 128
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function get
+BLKDROP 5
+
+.globl	AmountInput_no_obj_get
+.type	AmountInput_no_obj_get, @function
+CALL $AmountInput_no_obj_get_macro$
+
+.macro AmountInput_no_obj_get_macro
+;; param: answerId
+;; param: prompt
+;; param: decimals
+;; param: min
+;; param: max
+; function get
+;; address.makeAddrStd()
+PUSHSLICE x9c343a68e133c5382c4991120c33b5e40f7bc31d25bea4414a9798db0b0613d9d09_
+;; decl: addr
+;; Remote call IAmountInput.get
+;; push identifier max
+;; push identifier min
+;; push identifier decimals
+PUSH3 S1, S2, S3
+;; push identifier prompt
+;; push identifier answerId
+;; push identifier addr
+PUSH3 S7, S8, S3
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000003_
+STSLICER
+BLKSWAP 5, 1
+NEWC
+STSLICECONST x16740bd3
+STU 32
+STREF
+STU 8
+STU 128
+STU 128
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function get
+BLKDROP 6
+
+.globl	ConfirmInput_with_obj_get
+.type	ConfirmInput_with_obj_get, @function
+CALL $ConfirmInput_with_obj_get_macro$
+
+.macro ConfirmInput_with_obj_get_macro
+;; param: answerId
+;; param: prompt
+; function get
+;; address.makeAddrStd()
+PUSHSLICE x9c22cca7d5e6992428ce241e4d0ba84bff2c7b6b976b54ced4c545c677f87ed0515_
+;; decl: addr
+;; Remote call IConfirmInput.get
+;; push identifier prompt
+;; push identifier answerId
+;; push identifier addr
+PUSH3 S1, S2, S0
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000000869219e5_
+STSLICER
+STU 32
+STREF
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function get
+DROP2
+
+.globl	ConfirmInput_no_obj_get
+.type	ConfirmInput_no_obj_get, @function
+CALL $ConfirmInput_no_obj_get_macro$
+
+.macro ConfirmInput_no_obj_get_macro
+;; param: answerId
+;; param: prompt
+; function get
+;; address.makeAddrStd()
+PUSHSLICE x9c22cca7d5e6992428ce241e4d0ba84bff2c7b6b976b54ced4c545c677f87ed0515_
+;; decl: addr
+;; Remote call IConfirmInput.get
+;; push identifier prompt
+;; push identifier answerId
+;; push identifier addr
+PUSH3 S1, S2, S0
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000000869219e5_
+STSLICER
+STU 32
+STREF
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function get
+BLKDROP 3
+
+.globl	Sdk_with_obj_getBalance
+.type	Sdk_with_obj_getBalance, @function
+CALL $Sdk_with_obj_getBalance_macro$
+
+.macro Sdk_with_obj_getBalance_macro
+;; param: answerId
+;; param: addr
+; function getBalance
+;; address.makeAddrStd()
+PUSHSLICE x9c31f8c8a9f200e593e3eda66275c2c11ec9e940cc18d5d3e858d16d4f3c5437897_
+;; decl: a
+;; Remote call ISdk.getBalance
+;; push identifier addr
+;; push identifier answerId
+;; push identifier a
+PUSH3 S1, S2, S0
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000003_
+STSLICER
+ROTREV
+NEWC
+STSLICECONST x0036b4f3
+STU 32
+STSLICE
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function getBalance
+DROP2
+
+.globl	Sdk_no_obj_getBalance
+.type	Sdk_no_obj_getBalance, @function
+CALL $Sdk_no_obj_getBalance_macro$
+
+.macro Sdk_no_obj_getBalance_macro
+;; param: answerId
+;; param: addr
+; function getBalance
+;; address.makeAddrStd()
+PUSHSLICE x9c31f8c8a9f200e593e3eda66275c2c11ec9e940cc18d5d3e858d16d4f3c5437897_
+;; decl: a
+;; Remote call ISdk.getBalance
+;; push identifier addr
+;; push identifier answerId
+;; push identifier a
+PUSH3 S1, S2, S0
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000003_
+STSLICER
+ROTREV
+NEWC
+STSLICECONST x0036b4f3
+STU 32
+STSLICE
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function getBalance
+BLKDROP 3
+
+.globl	Sdk_with_obj_getAccountType
+.type	Sdk_with_obj_getAccountType, @function
+CALL $Sdk_with_obj_getAccountType_macro$
+
+.macro Sdk_with_obj_getAccountType_macro
+;; param: answerId
+;; param: addr
+; function getAccountType
+;; address.makeAddrStd()
+PUSHSLICE x9c31f8c8a9f200e593e3eda66275c2c11ec9e940cc18d5d3e858d16d4f3c5437897_
+;; decl: a
+;; Remote call ISdk.getAccountType
+;; push identifier addr
+;; push identifier answerId
+;; push identifier a
+PUSH3 S1, S2, S0
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000003_
+STSLICER
+ROTREV
+NEWC
+STSLICECONST x2b885111
+STU 32
+STSLICE
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function getAccountType
+DROP2
+
+.globl	Sdk_no_obj_getAccountType
+.type	Sdk_no_obj_getAccountType, @function
+CALL $Sdk_no_obj_getAccountType_macro$
+
+.macro Sdk_no_obj_getAccountType_macro
+;; param: answerId
+;; param: addr
+; function getAccountType
+;; address.makeAddrStd()
+PUSHSLICE x9c31f8c8a9f200e593e3eda66275c2c11ec9e940cc18d5d3e858d16d4f3c5437897_
+;; decl: a
+;; Remote call ISdk.getAccountType
+;; push identifier addr
+;; push identifier answerId
+;; push identifier a
+PUSH3 S1, S2, S0
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000003_
+STSLICER
+ROTREV
+NEWC
+STSLICECONST x2b885111
+STU 32
+STSLICE
+STBREFR
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function getAccountType
+BLKDROP 3
+
+.globl	Terminal_with_obj_print
+.type	Terminal_with_obj_print, @function
+CALL $Terminal_with_obj_print_macro$
+
+.macro Terminal_with_obj_print_macro
+;; param: answerId
+;; param: message
+; function print
+;; address.makeAddrStd()
+PUSHSLICE x9c30f2ca6c6cddc430a5b6adb996c178ac8b316c3190cbf8a1916356e81774251c7_
+;; decl: addr
+;; Remote call ITerminal.print
+;; push identifier message
+;; push identifier answerId
+;; push identifier addr
+PUSH3 S1, S2, S0
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x398968000000000000000000000000000019cc9385_
+STSLICER
+STU 32
+STREF
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function print
+DROP2
+
+.globl	Terminal_no_obj_print
+.type	Terminal_no_obj_print, @function
+CALL $Terminal_no_obj_print_macro$
+
+.macro Terminal_no_obj_print_macro
+;; param: answerId
+;; param: message
+; function print
+;; address.makeAddrStd()
+PUSHSLICE x9c30f2ca6c6cddc430a5b6adb996c178ac8b316c3190cbf8a1916356e81774251c7_
+;; decl: addr
+;; Remote call ITerminal.print
+;; push identifier message
+;; push identifier answerId
+;; push identifier addr
+PUSH3 S1, S2, S0
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x398968000000000000000000000000000019cc9385_
+STSLICER
+STU 32
+STREF
+ENDC
+PUSHINT 0
+SENDRAWMSG
+; end function print
+BLKDROP 3
+
+.macro public_function_selector
+DUP
+PUSHINT 1822630878
+LEQ
+IFJMPREF {
+	DUP
+	PUSHINT 335034575
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 3563
+		EQUAL
+		IFJMPREF {
+			CALL $getDebotInfo$
+		}
+		DUP
+		PUSHINT 94113135
+		EQUAL
+		IFJMPREF {
+			CALL $start$
+		}
+		DUP
+		PUSHINT 258836457
+		EQUAL
+		IFJMPREF {
+			CALL $setIcon$
+		}
+		DUP
+		PUSHINT 335034575
+		EQUAL
+		IFJMPREF {
+			CALL $addDeviceSetDeviceId$
+		}
+	}
+	DUP
+	PUSHINT 982127480
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 388172858
+		EQUAL
+		IFJMPREF {
+			CALL $upgrade$
+		}
+		DUP
+		PUSHINT 690182183
+		EQUAL
+		IFJMPREF {
+			CALL $isDeviceMoneySend$
+		}
+		DUP
+		PUSHINT 958466041
+		EQUAL
+		IFJMPREF {
+			CALL $setDeviceCode$
+		}
+		DUP
+		PUSHINT 982127480
+		EQUAL
+		IFJMPREF {
+			CALL $deployDevice$
+		}
+	}
+	DUP
+	PUSHINT 1568115769
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 1101656941
+		EQUAL
+		IFJMPREF {
+			CALL $setUserInput$
+		}
+		DUP
+		PUSHINT 1350413968
+		EQUAL
+		IFJMPREF {
+			CALL $onSuccessDeviceDeployed$
+		}
+		DUP
+		PUSHINT 1482960138
+		EQUAL
+		IFJMPREF {
+			CALL $getRequiredInterfaces$
+		}
+		DUP
+		PUSHINT 1568115769
+		EQUAL
+		IFJMPREF {
+			CALL $setABI$
+		}
+	}
+	DUP
+	PUSHINT 1822630878
+	LEQ
+	IFJMPREF {
+		DUP
+		PUSHINT 1701548687
+		EQUAL
+		IFJMPREF {
+			CALL $checkIotDeviceBalance$
+		}
+		DUP
+		PUSHINT 1717762330
+		EQUAL
+		IFJMPREF {
+			CALL $addDeviceCheckContract$
+		}
+		DUP
+		PUSHINT 1756716863
+		EQUAL
+		IFJMPREF {
+			CALL $constructor$
+		}
+		DUP
+		PUSHINT 1822630878
+		EQUAL
+		IFJMPREF {
+			CALL $DeployIotDevice$
+		}
+	}
+}
+DUP
+PUSHINT 2112671963
+LEQ
+IFJMPREF {
+	DUP
+	PUSHINT 1896728572
+	EQUAL
+	IFJMPREF {
+		CALL $onDeployDeviceFailed$
+	}
+	DUP
+	PUSHINT 2112671963
+	EQUAL
+	IFJMPREF {
+		CALL $getDebotOptions$
+	}
+}
